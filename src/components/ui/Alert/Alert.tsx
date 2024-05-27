@@ -1,27 +1,28 @@
 /** @format */
 import "./Alert.scss";
-import { BellRing } from "lucide-react";
 import { X } from "lucide-react";
+import type { ReactNode } from "react";
+import type { AlertType } from "../../../types";
 
-interface IProps {}
-const Alert = ({}: IProps) => {
+interface IProps {
+  type: AlertType;
+  icon: ReactNode;
+  title: string;
+  desc?: string;
+  children?: ReactNode;
+}
+const Alert = ({ type, icon, title, desc, children }: IProps) => {
   return (
     <>
-      <div className="alert">
+      <div className={type}>
         <div className="alert-header">
           <div className="title">
-            <BellRing />
-            <h2>Alert</h2>
+            <span>{icon}</span>
+            <h2>{title}</h2>
           </div>
-          <span>
-            <X />
-          </span>
+          <X className="close" />
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque
-          quisquam eum voluptatibus minus nulla eos vero nisi harum doloribus
-          fugit.
-        </p>
+        {children ? children : <p>{desc}</p>}
       </div>
     </>
   );
