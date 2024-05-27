@@ -1,9 +1,12 @@
 /** @format */
 
 import "./App.css";
+import Alert from "./components/ui/Alert/Alert";
 
 function App() {
-  return <></>;
+  return <>
+  <Alert/>
+  </>;
 }
 
 export default App;
